@@ -1,8 +1,7 @@
 package sae.semestre.six.controller;
 
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import sae.semestre.six.entities.prescription.PrescriptionController;
+
 import java.util.List;
 
 public class PrescriptionControllerTest {
