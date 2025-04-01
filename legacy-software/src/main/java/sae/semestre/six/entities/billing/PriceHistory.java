@@ -1,4 +1,4 @@
-package sae.semestre.six.entities.model;
+package sae.semestre.six.entities.billing;
 
 import jakarta.persistence.*;
 import sae.semestre.six.entities.inventory.Inventory;

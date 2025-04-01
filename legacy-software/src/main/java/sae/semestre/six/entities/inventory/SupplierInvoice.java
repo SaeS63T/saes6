@@ -1,4 +1,4 @@
-package sae.semestre.six.entities.model;
+package sae.semestre.six.entities.inventory;
 
 import jakarta.persistence.*;
 import java.util.Date;

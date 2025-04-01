@@ -2,8 +2,6 @@ package sae.semestre.six.entities.inventory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import sae.semestre.six.entities.model.SupplierInvoice;
-import sae.semestre.six.entities.model.SupplierInvoiceDetail;
 import sae.semestre.six.entities.email.EmailService;
 import java.util.*;
 import java.util.stream.Collectors;
