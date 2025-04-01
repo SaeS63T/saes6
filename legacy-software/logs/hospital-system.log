@@ -4171,3 +4171,312 @@ Caused by: java.net.ConnectException: Connection refused: connect
 2025-03-16 18:15:56.150  INFO 18252 --- [Thread-3] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
 2025-03-16 18:15:56.153  INFO 18252 --- [Thread-3] o.s.o.jpa.LocalEntityManagerFactoryBean  : Closing JPA EntityManagerFactory for persistence unit 'hospitalPU'
 2025-03-16 18:15:56.154  INFO 18252 --- [Thread-3] org.hibernate.orm.connections.pooling    : HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:7878/hospital_db?useSSL=false]
+2025-04-01 15:09:50.576  INFO 1588 --- [main] sae.semestre.six.DemoApplication         : Starting DemoApplication on A202H2 with PID 1588 (Z:\SaeS6\legacy-software\target\classes started by thomas.lemaire in Z:\SaeS6\legacy-software)
+2025-04-01 15:09:50.616 DEBUG 1588 --- [main] sae.semestre.six.DemoApplication         : Running with Spring Boot v1.5.22.RELEASE, Spring v4.3.25.RELEASE
+2025-04-01 15:09:50.617  INFO 1588 --- [main] sae.semestre.six.DemoApplication         : No active profile set, falling back to default profiles: default
+2025-04-01 15:09:52.422  INFO 1588 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@45efd90f: startup date [Tue Apr 01 15:09:52 CEST 2025]; root of context hierarchy
+2025-04-01 15:10:01.845 ERROR 1588 --- [main] o.s.boot.SpringApplication               : Application startup failed
+
+java.lang.IllegalStateException: Cannot load configuration class: sae.semestre.six.DemoApplication
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:404) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanFactory(ConfigurationClassPostProcessor.java:249) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:283) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:127) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:687) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:524) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:123) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:666) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:353) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:300) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1082) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1071) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at sae.semestre.six.DemoApplication.main(DemoApplication.java:14) ~[classes/:na]
+Caused by: java.lang.ExceptionInInitializerError: null
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.newEnhancer(ConfigurationClassEnhancer.java:122) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.enhance(ConfigurationClassEnhancer.java:110) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:394) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	... 12 common frames omitted
+Caused by: org.springframework.cglib.core.CodeGenerationException: java.lang.reflect.InaccessibleObjectException-->Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @5fe94a96
+	at org.springframework.cglib.core.ReflectUtils.defineClass(ReflectUtils.java:464) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator.generate(AbstractClassGenerator.java:336) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData$3.apply(AbstractClassGenerator.java:93) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData$3.apply(AbstractClassGenerator.java:91) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.internal.LoadingCache$2.call(LoadingCache.java:54) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at org.springframework.cglib.core.internal.LoadingCache.createEntry(LoadingCache.java:61) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.internal.LoadingCache.get(LoadingCache.java:34) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.get(AbstractClassGenerator.java:116) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator.create(AbstractClassGenerator.java:291) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.KeyFactory$Generator.create(KeyFactory.java:221) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.KeyFactory.create(KeyFactory.java:174) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.KeyFactory.create(KeyFactory.java:153) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.proxy.Enhancer.<clinit>(Enhancer.java:73) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	... 15 common frames omitted
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @5fe94a96
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:388) ~[na:na]
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:364) ~[na:na]
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:312) ~[na:na]
+	at java.base/java.lang.reflect.Method.checkCanSetAccessible(Method.java:203) ~[na:na]
+	at java.base/java.lang.reflect.Method.setAccessible(Method.java:197) ~[na:na]
+	at org.springframework.cglib.core.ReflectUtils$1.run(ReflectUtils.java:61) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:571) ~[na:na]
+	at org.springframework.cglib.core.ReflectUtils.<clinit>(ReflectUtils.java:52) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.KeyFactory$Generator.generateClass(KeyFactory.java:243) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.DefaultGeneratorStrategy.generate(DefaultGeneratorStrategy.java:25) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator.generate(AbstractClassGenerator.java:329) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	... 27 common frames omitted
+
+2025-04-01 15:10:01.856  INFO 1588 --- [main] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@45efd90f: startup date [Tue Apr 01 15:09:52 CEST 2025]; root of context hierarchy
+2025-04-01 15:10:54.416  INFO 9276 --- [main] sae.semestre.six.DemoApplication         : Starting DemoApplication on A202H2 with PID 9276 (Z:\SaeS6\legacy-software\target\classes started by thomas.lemaire in Z:\SaeS6\legacy-software)
+2025-04-01 15:10:54.458 DEBUG 9276 --- [main] sae.semestre.six.DemoApplication         : Running with Spring Boot v1.5.22.RELEASE, Spring v4.3.25.RELEASE
+2025-04-01 15:10:54.463  INFO 9276 --- [main] sae.semestre.six.DemoApplication         : No active profile set, falling back to default profiles: default
+2025-04-01 15:10:55.717  INFO 9276 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@61710c6: startup date [Tue Apr 01 15:10:55 CEST 2025]; root of context hierarchy
+2025-04-01 15:11:03.788 ERROR 9276 --- [main] o.s.boot.SpringApplication               : Application startup failed
+
+java.lang.IllegalStateException: Cannot load configuration class: sae.semestre.six.DemoApplication
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:404) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanFactory(ConfigurationClassPostProcessor.java:249) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:283) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:127) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:687) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:524) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:123) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:666) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:353) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:300) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1082) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1071) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at sae.semestre.six.DemoApplication.main(DemoApplication.java:14) ~[classes/:na]
+Caused by: java.lang.ExceptionInInitializerError: null
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.newEnhancer(ConfigurationClassEnhancer.java:122) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.enhance(ConfigurationClassEnhancer.java:110) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:394) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	... 12 common frames omitted
+Caused by: org.springframework.cglib.core.CodeGenerationException: java.lang.reflect.InaccessibleObjectException-->Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @443118b0
+	at org.springframework.cglib.core.ReflectUtils.defineClass(ReflectUtils.java:464) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator.generate(AbstractClassGenerator.java:336) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData$3.apply(AbstractClassGenerator.java:93) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData$3.apply(AbstractClassGenerator.java:91) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.internal.LoadingCache$2.call(LoadingCache.java:54) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at org.springframework.cglib.core.internal.LoadingCache.createEntry(LoadingCache.java:61) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.internal.LoadingCache.get(LoadingCache.java:34) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.get(AbstractClassGenerator.java:116) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator.create(AbstractClassGenerator.java:291) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.KeyFactory$Generator.create(KeyFactory.java:221) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.KeyFactory.create(KeyFactory.java:174) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.KeyFactory.create(KeyFactory.java:153) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.proxy.Enhancer.<clinit>(Enhancer.java:73) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	... 15 common frames omitted
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @443118b0
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:388) ~[na:na]
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:364) ~[na:na]
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:312) ~[na:na]
+	at java.base/java.lang.reflect.Method.checkCanSetAccessible(Method.java:203) ~[na:na]
+	at java.base/java.lang.reflect.Method.setAccessible(Method.java:197) ~[na:na]
+	at org.springframework.cglib.core.ReflectUtils$1.run(ReflectUtils.java:61) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:571) ~[na:na]
+	at org.springframework.cglib.core.ReflectUtils.<clinit>(ReflectUtils.java:52) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.KeyFactory$Generator.generateClass(KeyFactory.java:243) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.DefaultGeneratorStrategy.generate(DefaultGeneratorStrategy.java:25) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator.generate(AbstractClassGenerator.java:329) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	... 27 common frames omitted
+
+2025-04-01 15:11:03.800  INFO 9276 --- [main] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@61710c6: startup date [Tue Apr 01 15:10:55 CEST 2025]; root of context hierarchy
+2025-04-01 15:14:28.683  INFO 15692 --- [main] sae.semestre.six.DemoApplication         : Starting DemoApplication on A202H2 with PID 15692 (Z:\SaeS6\legacy-software\target\classes started by thomas.lemaire in Z:\SaeS6\legacy-software)
+2025-04-01 15:14:28.687 DEBUG 15692 --- [main] sae.semestre.six.DemoApplication         : Running with Spring Boot v1.5.22.RELEASE, Spring v4.3.25.RELEASE
+2025-04-01 15:14:28.687  INFO 15692 --- [main] sae.semestre.six.DemoApplication         : No active profile set, falling back to default profiles: default
+2025-04-01 15:14:29.008  INFO 15692 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@a8ef162: startup date [Tue Apr 01 15:14:29 CEST 2025]; root of context hierarchy
+2025-04-01 15:14:30.754 ERROR 15692 --- [main] o.s.boot.SpringApplication               : Application startup failed
+
+java.lang.IllegalStateException: Cannot load configuration class: sae.semestre.six.DemoApplication
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:404) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanFactory(ConfigurationClassPostProcessor.java:249) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:283) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:127) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:687) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:524) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:123) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:666) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:353) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:300) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1082) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1071) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at sae.semestre.six.DemoApplication.main(DemoApplication.java:14) ~[classes/:na]
+Caused by: java.lang.ExceptionInInitializerError: null
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.newEnhancer(ConfigurationClassEnhancer.java:122) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.enhance(ConfigurationClassEnhancer.java:110) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:394) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	... 12 common frames omitted
+Caused by: org.springframework.cglib.core.CodeGenerationException: java.lang.reflect.InaccessibleObjectException-->Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @443118b0
+	at org.springframework.cglib.core.ReflectUtils.defineClass(ReflectUtils.java:464) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator.generate(AbstractClassGenerator.java:336) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData$3.apply(AbstractClassGenerator.java:93) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData$3.apply(AbstractClassGenerator.java:91) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.internal.LoadingCache$2.call(LoadingCache.java:54) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at org.springframework.cglib.core.internal.LoadingCache.createEntry(LoadingCache.java:61) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.internal.LoadingCache.get(LoadingCache.java:34) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.get(AbstractClassGenerator.java:116) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator.create(AbstractClassGenerator.java:291) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.KeyFactory$Generator.create(KeyFactory.java:221) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.KeyFactory.create(KeyFactory.java:174) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.KeyFactory.create(KeyFactory.java:153) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.proxy.Enhancer.<clinit>(Enhancer.java:73) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	... 15 common frames omitted
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @443118b0
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:388) ~[na:na]
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:364) ~[na:na]
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:312) ~[na:na]
+	at java.base/java.lang.reflect.Method.checkCanSetAccessible(Method.java:203) ~[na:na]
+	at java.base/java.lang.reflect.Method.setAccessible(Method.java:197) ~[na:na]
+	at org.springframework.cglib.core.ReflectUtils$1.run(ReflectUtils.java:61) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:571) ~[na:na]
+	at org.springframework.cglib.core.ReflectUtils.<clinit>(ReflectUtils.java:52) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.KeyFactory$Generator.generateClass(KeyFactory.java:243) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.DefaultGeneratorStrategy.generate(DefaultGeneratorStrategy.java:25) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator.generate(AbstractClassGenerator.java:329) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	... 27 common frames omitted
+
+2025-04-01 15:14:30.759  INFO 15692 --- [main] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@a8ef162: startup date [Tue Apr 01 15:14:29 CEST 2025]; root of context hierarchy
+2025-04-01 15:16:03.258  INFO 6292 --- [main] sae.semestre.six.DemoApplication         : Starting DemoApplication on A202H2 with PID 6292 (Z:\SaeS6\legacy-software\target\classes started by thomas.lemaire in Z:\SaeS6\legacy-software)
+2025-04-01 15:16:03.263 DEBUG 6292 --- [main] sae.semestre.six.DemoApplication         : Running with Spring Boot v1.5.22.RELEASE, Spring v4.3.25.RELEASE
+2025-04-01 15:16:03.264  INFO 6292 --- [main] sae.semestre.six.DemoApplication         : No active profile set, falling back to default profiles: default
+2025-04-01 15:16:03.702  INFO 6292 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@a8ef162: startup date [Tue Apr 01 15:16:03 CEST 2025]; root of context hierarchy
+2025-04-01 15:16:06.355 ERROR 6292 --- [main] o.s.boot.SpringApplication               : Application startup failed
+
+java.lang.IllegalStateException: Cannot load configuration class: sae.semestre.six.DemoApplication
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:404) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanFactory(ConfigurationClassPostProcessor.java:249) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:283) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:127) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:687) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:524) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:123) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:666) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:353) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:300) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1082) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1071) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at sae.semestre.six.DemoApplication.main(DemoApplication.java:14) ~[classes/:na]
+Caused by: java.lang.ExceptionInInitializerError: null
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.newEnhancer(ConfigurationClassEnhancer.java:122) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.enhance(ConfigurationClassEnhancer.java:110) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:394) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	... 12 common frames omitted
+Caused by: org.springframework.cglib.core.CodeGenerationException: java.lang.reflect.InaccessibleObjectException-->Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @443118b0
+	at org.springframework.cglib.core.ReflectUtils.defineClass(ReflectUtils.java:464) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator.generate(AbstractClassGenerator.java:336) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData$3.apply(AbstractClassGenerator.java:93) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData$3.apply(AbstractClassGenerator.java:91) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.internal.LoadingCache$2.call(LoadingCache.java:54) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at org.springframework.cglib.core.internal.LoadingCache.createEntry(LoadingCache.java:61) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.internal.LoadingCache.get(LoadingCache.java:34) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.get(AbstractClassGenerator.java:116) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator.create(AbstractClassGenerator.java:291) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.KeyFactory$Generator.create(KeyFactory.java:221) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.KeyFactory.create(KeyFactory.java:174) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.KeyFactory.create(KeyFactory.java:153) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.proxy.Enhancer.<clinit>(Enhancer.java:73) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	... 15 common frames omitted
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @443118b0
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:388) ~[na:na]
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:364) ~[na:na]
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:312) ~[na:na]
+	at java.base/java.lang.reflect.Method.checkCanSetAccessible(Method.java:203) ~[na:na]
+	at java.base/java.lang.reflect.Method.setAccessible(Method.java:197) ~[na:na]
+	at org.springframework.cglib.core.ReflectUtils$1.run(ReflectUtils.java:61) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:571) ~[na:na]
+	at org.springframework.cglib.core.ReflectUtils.<clinit>(ReflectUtils.java:52) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.KeyFactory$Generator.generateClass(KeyFactory.java:243) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.DefaultGeneratorStrategy.generate(DefaultGeneratorStrategy.java:25) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator.generate(AbstractClassGenerator.java:329) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	... 27 common frames omitted
+
+2025-04-01 15:16:06.359  INFO 6292 --- [main] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@a8ef162: startup date [Tue Apr 01 15:16:03 CEST 2025]; root of context hierarchy
+2025-04-01 15:19:26.836  INFO 4728 --- [main] sae.semestre.six.DemoApplication         : Starting DemoApplication on A202H2 with PID 4728 (Z:\SaeS6\legacy-software\target\classes started by thomas.lemaire in Z:\SaeS6\legacy-software)
+2025-04-01 15:19:26.841 DEBUG 4728 --- [main] sae.semestre.six.DemoApplication         : Running with Spring Boot v1.5.22.RELEASE, Spring v4.3.25.RELEASE
+2025-04-01 15:19:26.842  INFO 4728 --- [main] sae.semestre.six.DemoApplication         : No active profile set, falling back to default profiles: default
+2025-04-01 15:19:27.153  INFO 4728 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@61710c6: startup date [Tue Apr 01 15:19:27 CEST 2025]; root of context hierarchy
+2025-04-01 15:19:29.085 ERROR 4728 --- [main] o.s.boot.SpringApplication               : Application startup failed
+
+java.lang.IllegalStateException: Cannot load configuration class: sae.semestre.six.DemoApplication
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:404) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanFactory(ConfigurationClassPostProcessor.java:249) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:283) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:127) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:687) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:524) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:123) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:666) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:353) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:300) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1082) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1071) ~[spring-boot-1.5.22.RELEASE.jar:1.5.22.RELEASE]
+	at sae.semestre.six.DemoApplication.main(DemoApplication.java:14) ~[classes/:na]
+Caused by: java.lang.ExceptionInInitializerError: null
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.newEnhancer(ConfigurationClassEnhancer.java:122) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.enhance(ConfigurationClassEnhancer.java:110) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:394) ~[spring-context-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	... 12 common frames omitted
+Caused by: org.springframework.cglib.core.CodeGenerationException: java.lang.reflect.InaccessibleObjectException-->Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @443118b0
+	at org.springframework.cglib.core.ReflectUtils.defineClass(ReflectUtils.java:464) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator.generate(AbstractClassGenerator.java:336) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData$3.apply(AbstractClassGenerator.java:93) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData$3.apply(AbstractClassGenerator.java:91) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.internal.LoadingCache$2.call(LoadingCache.java:54) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at org.springframework.cglib.core.internal.LoadingCache.createEntry(LoadingCache.java:61) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.internal.LoadingCache.get(LoadingCache.java:34) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.get(AbstractClassGenerator.java:116) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator.create(AbstractClassGenerator.java:291) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.KeyFactory$Generator.create(KeyFactory.java:221) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.KeyFactory.create(KeyFactory.java:174) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.KeyFactory.create(KeyFactory.java:153) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.proxy.Enhancer.<clinit>(Enhancer.java:73) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	... 15 common frames omitted
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @443118b0
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:388) ~[na:na]
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:364) ~[na:na]
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:312) ~[na:na]
+	at java.base/java.lang.reflect.Method.checkCanSetAccessible(Method.java:203) ~[na:na]
+	at java.base/java.lang.reflect.Method.setAccessible(Method.java:197) ~[na:na]
+	at org.springframework.cglib.core.ReflectUtils$1.run(ReflectUtils.java:61) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:571) ~[na:na]
+	at org.springframework.cglib.core.ReflectUtils.<clinit>(ReflectUtils.java:52) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.KeyFactory$Generator.generateClass(KeyFactory.java:243) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.DefaultGeneratorStrategy.generate(DefaultGeneratorStrategy.java:25) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	at org.springframework.cglib.core.AbstractClassGenerator.generate(AbstractClassGenerator.java:329) ~[spring-core-4.3.25.RELEASE.jar:4.3.25.RELEASE]
+	... 27 common frames omitted
+
+2025-04-01 15:19:29.089  INFO 4728 --- [main] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@61710c6: startup date [Tue Apr 01 15:19:27 CEST 2025]; root of context hierarchy
+2025-04-01T15:51:08.939+02:00  INFO 9808 --- [legacy-hospital-system] [main] sae.semestre.six.DemoApplication         : Starting DemoApplication using Java 23.0.1 with PID 9808 (Z:\SaeS6\legacy-software\target\classes started by thomas.lemaire in Z:\SaeS6\legacy-software)
+2025-04-01T15:51:08.943+02:00 DEBUG 9808 --- [legacy-hospital-system] [main] sae.semestre.six.DemoApplication         : Running with Spring Boot v3.2.4, Spring v6.1.5
+2025-04-01T15:51:08.944+02:00  INFO 9808 --- [legacy-hospital-system] [main] sae.semestre.six.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-04-01T15:51:11.034+02:00  INFO 9808 --- [legacy-hospital-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-01T15:51:11.120+02:00  INFO 9808 --- [legacy-hospital-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 70 ms. Found 0 JPA repository interfaces.
+2025-04-01T15:51:11.908+02:00  INFO 9808 --- [legacy-hospital-system] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8045 (http)
+2025-04-01T15:51:11.929+02:00  INFO 9808 --- [legacy-hospital-system] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-01T15:51:11.930+02:00  INFO 9808 --- [legacy-hospital-system] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2025-04-01T15:51:12.018+02:00  INFO 9808 --- [legacy-hospital-system] [main] o.a.c.c.C.[.[localhost].[/hospital]      : Initializing Spring embedded WebApplicationContext
+2025-04-01T15:51:12.019+02:00  INFO 9808 --- [legacy-hospital-system] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3004 ms
+2025-04-01T15:51:12.224+02:00  INFO 9808 --- [legacy-hospital-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-01T15:51:12.510+02:00  INFO 9808 --- [legacy-hospital-system] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4fecf308
+2025-04-01T15:51:12.514+02:00  INFO 9808 --- [legacy-hospital-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-01T15:51:12.705+02:00  INFO 9808 --- [legacy-hospital-system] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-01T15:51:12.860+02:00  INFO 9808 --- [legacy-hospital-system] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-04-01T15:51:12.969+02:00  INFO 9808 --- [legacy-hospital-system] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-01T15:51:13.657+02:00  INFO 9808 --- [legacy-hospital-system] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-01T15:51:13.771+02:00  WARN 9808 --- [legacy-hospital-system] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-01T15:51:13.775+02:00  WARN 9808 --- [legacy-hospital-system] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-04-01T15:51:16.351+02:00  INFO 9808 --- [legacy-hospital-system] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-01T15:51:19.178+02:00  INFO 9808 --- [legacy-hospital-system] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-01T15:51:19.524+02:00  WARN 9808 --- [legacy-hospital-system] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-01T15:51:20.051+02:00  WARN 9808 --- [legacy-hospital-system] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-04-01T15:51:20.276+02:00  INFO 9808 --- [legacy-hospital-system] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8045 (http) with context path '/hospital'
+2025-04-01T15:51:20.284+02:00  INFO 9808 --- [legacy-hospital-system] [main] sae.semestre.six.DemoApplication         : Started DemoApplication in 12.542 seconds (process running for 13.224)
+2025-04-01T15:51:36.187+02:00  INFO 9808 --- [legacy-hospital-system] [http-nio-8045-exec-2] o.a.c.c.C.[.[localhost].[/hospital]      : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-01T15:51:36.189+02:00  INFO 9808 --- [legacy-hospital-system] [http-nio-8045-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-01T15:51:36.190+02:00  INFO 9808 --- [legacy-hospital-system] [http-nio-8045-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-04-01T15:52:09.630+02:00  WARN 9808 --- [legacy-hospital-system] [http-nio-8045-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]

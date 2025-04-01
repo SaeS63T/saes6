@@ -1,9 +1,9 @@
 package sae.semestre.six.model;
 
-import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 import java.util.HashSet;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "bills")

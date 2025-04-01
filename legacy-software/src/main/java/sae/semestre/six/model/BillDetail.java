@@ -1,6 +1,6 @@
 package sae.semestre.six.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "bill_details")
