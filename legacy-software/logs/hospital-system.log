@@ -4483,3 +4483,31 @@ Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make protect
 2025-04-01T16:15:53.365+02:00  INFO 9808 --- [legacy-hospital-system] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-04-01T16:15:53.369+02:00  INFO 9808 --- [legacy-hospital-system] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-04-01T16:15:53.374+02:00  INFO 9808 --- [legacy-hospital-system] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-01T16:54:46.850+02:00  INFO 17488 --- [legacy-hospital-system] [main] sae.semestre.six.DemoApplication         : Starting DemoApplication using Java 23.0.1 with PID 17488 (Z:\SaeS6\legacy-software\target\classes started by thomas.lemaire in Z:\SaeS6\legacy-software)
+2025-04-01T16:54:46.853+02:00 DEBUG 17488 --- [legacy-hospital-system] [main] sae.semestre.six.DemoApplication         : Running with Spring Boot v3.2.4, Spring v6.1.5
+2025-04-01T16:54:46.854+02:00  INFO 17488 --- [legacy-hospital-system] [main] sae.semestre.six.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-04-01T16:54:48.348+02:00  INFO 17488 --- [legacy-hospital-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-01T16:54:48.428+02:00  INFO 17488 --- [legacy-hospital-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 66 ms. Found 0 JPA repository interfaces.
+2025-04-01T16:54:49.127+02:00  INFO 17488 --- [legacy-hospital-system] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8045 (http)
+2025-04-01T16:54:49.145+02:00  INFO 17488 --- [legacy-hospital-system] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-01T16:54:49.146+02:00  INFO 17488 --- [legacy-hospital-system] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2025-04-01T16:54:49.225+02:00  INFO 17488 --- [legacy-hospital-system] [main] o.a.c.c.C.[.[localhost].[/hospital]      : Initializing Spring embedded WebApplicationContext
+2025-04-01T16:54:49.226+02:00  INFO 17488 --- [legacy-hospital-system] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2312 ms
+2025-04-01T16:54:49.376+02:00  INFO 17488 --- [legacy-hospital-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-01T16:54:49.618+02:00  INFO 17488 --- [legacy-hospital-system] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@707865bd
+2025-04-01T16:54:49.621+02:00  INFO 17488 --- [legacy-hospital-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-01T16:54:49.815+02:00  INFO 17488 --- [legacy-hospital-system] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-01T16:54:49.964+02:00  INFO 17488 --- [legacy-hospital-system] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-04-01T16:54:50.039+02:00  INFO 17488 --- [legacy-hospital-system] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-01T16:54:50.612+02:00  INFO 17488 --- [legacy-hospital-system] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-01T16:54:50.706+02:00  WARN 17488 --- [legacy-hospital-system] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-01T16:54:50.710+02:00  WARN 17488 --- [legacy-hospital-system] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-04-01T16:54:52.668+02:00  INFO 17488 --- [legacy-hospital-system] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-01T16:54:55.566+02:00  INFO 17488 --- [legacy-hospital-system] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-01T16:54:55.856+02:00  WARN 17488 --- [legacy-hospital-system] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-01T16:54:56.296+02:00  WARN 17488 --- [legacy-hospital-system] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-04-01T16:54:56.482+02:00  INFO 17488 --- [legacy-hospital-system] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8045 (http) with context path '/hospital'
+2025-04-01T16:54:56.488+02:00  INFO 17488 --- [legacy-hospital-system] [main] sae.semestre.six.DemoApplication         : Started DemoApplication in 10.335 seconds (process running for 10.81)
+2025-04-01T16:57:18.413+02:00  INFO 17488 --- [legacy-hospital-system] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-01T16:57:18.417+02:00  INFO 17488 --- [legacy-hospital-system] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-01T16:57:18.426+02:00  INFO 17488 --- [legacy-hospital-system] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
