@@ -1,14 +1,18 @@
 package sae.semestre.six.controller;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import sae.semestre.six.entities.prescription.PrescriptionController;
 
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PrescriptionControllerTest {
     
     private PrescriptionController prescriptionController;
     
-    @Before
+    @BeforeEach
     public void setUp() {
         prescriptionController = new PrescriptionController();
     }

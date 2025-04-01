@@ -1,8 +1,12 @@
 package sae.semestre.six.controller;
 
+import org.junit.jupiter.api.Test;
 import sae.semestre.six.entities.billing.BillingController;
 
 import java.io.File;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BillingControllerTest {
     
