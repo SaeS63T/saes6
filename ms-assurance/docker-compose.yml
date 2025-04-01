@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: assurance_db
+    ports:
+      - "7879:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: assurance_db
