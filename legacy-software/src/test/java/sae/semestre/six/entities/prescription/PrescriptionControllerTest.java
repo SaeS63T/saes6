@@ -1,4 +1,4 @@
-package sae.semestre.six.controller;
+package sae.semestre.six.entities.prescription;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

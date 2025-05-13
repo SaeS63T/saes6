@@ -1,4 +1,4 @@
-package sae.semestre.six.entities.prescription;
+package sae.semestre.six.entities.treatment;
 
 import jakarta.persistence.*;
 import sae.semestre.six.entities.patienthistory.PatientHistory;

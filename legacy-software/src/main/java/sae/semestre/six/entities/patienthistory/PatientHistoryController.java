@@ -10,7 +10,7 @@ import java.util.*;
 public class PatientHistoryController {
     
     @Autowired
-    private PatientHistoryDao patientHistoryDao;
+    private PatientHistoryRepository patientHistoryDao;
     
     
     @GetMapping("/search")

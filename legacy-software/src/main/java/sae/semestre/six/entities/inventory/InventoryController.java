@@ -3,6 +3,9 @@ package sae.semestre.six.entities.inventory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import sae.semestre.six.entities.email.EmailService;
+import sae.semestre.six.entities.supplierinvoice.SupplierInvoice;
+import sae.semestre.six.entities.supplierinvoice.SupplierInvoiceDetail;
+
 import java.util.*;
 import java.util.stream.Collectors;
 import java.io.FileWriter;
@@ -13,7 +16,7 @@ import java.io.IOException;
 public class InventoryController {
     
     @Autowired
-    private InventoryDao inventoryDao;
+    private InventoryRepository inventoryDao;
     
     private final EmailService emailService = EmailService.getInstance();
     

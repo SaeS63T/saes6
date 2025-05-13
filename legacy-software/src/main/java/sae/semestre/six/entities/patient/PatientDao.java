@@ -1,10 +1,26 @@
 package sae.semestre.six.entities.patient;
 
-import sae.semestre.six.base.GenericDao;
-
+import sae.semestre.six.base.AbstractHibernateDao;
+import org.springframework.stereotype.Repository;
 import java.util.List;
 
-public interface PatientDao extends GenericDao<Patient, Long> {
-    Patient findByPatientNumber(String patientNumber);
-    List<Patient> findByLastName(String lastName);
+@Repository
+public class PatientDao extends AbstractHibernateDao<Patient, Long> implements PatientRepository {
+    
+    @Override
+    public Patient findByPatientNumber(String patientNumber) {
+        return (Patient) getEntityManager()
+                .createQuery("FROM Patient WHERE patientNumber = :patientNumber")
+                .setParameter("patientNumber", patientNumber)
+                .getSingleResult();
+    }
+    
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Patient> findByLastName(String lastName) {
+        return getEntityManager()
+                .createQuery("FROM Patient WHERE lastName LIKE :lastName")
+                .setParameter("lastName", lastName + "%")
+                .getResultList();
+    }
 } 

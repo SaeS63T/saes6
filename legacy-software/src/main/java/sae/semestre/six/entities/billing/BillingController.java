@@ -1,15 +1,17 @@
 package sae.semestre.six.entities.billing;
 
-import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import sae.semestre.six.entities.doctor.DoctorDao;
-import sae.semestre.six.entities.patient.PatientDao;
+import org.springframework.web.bind.annotation.*;
+import sae.semestre.six.base.Utils;
+import sae.semestre.six.entities.billing.dto.BillingRequest;
+import sae.semestre.six.entities.doctor.DoctorService;
 import sae.semestre.six.entities.doctor.Doctor;
 import sae.semestre.six.entities.patient.Patient;
 import sae.semestre.six.entities.email.EmailService;
 import java.util.*;
 import java.io.*;
 import org.hibernate.Hibernate;
+import sae.semestre.six.entities.patient.PatientService;
 
 @RestController
 @RequestMapping("/billing")
@@ -19,89 +21,54 @@ public class BillingController {
     private Map<String, Double> priceList = new HashMap<>();
     private double totalRevenue = 0.0;
     private List<String> pendingBills = new ArrayList<>();
-    
+
+    private final EmailService emailService;
+    private final BillingService billingService;
+    private final DoctorService doctorService;
+    private final PatientService patientService;
+
     @Autowired
-    private BillDao billDao;
-    
-    @Autowired
-    private PatientDao patientDao;
-    
-    @Autowired
-    private DoctorDao doctorDao;
-    
-    private final EmailService emailService = EmailService.getInstance();
-    
-    private BillingController() {
+    private BillingController(
+            EmailService emailService,
+            BillingService billingService,
+            DoctorService doctorService,
+            PatientService patientService
+    ) {
+        this.emailService = emailService;
+        this.billingService = billingService;
+        this.doctorService = doctorService;
+        this.patientService = patientService;
+
+        this.initData();
+    }
+
+    private void initData() {
         priceList.put("CONSULTATION", 50.0);
         priceList.put("XRAY", 150.0);
         priceList.put("CHIRURGIE", 1000.0);
     }
-    
-    public static BillingController getInstance() {
-        if (instance == null) {
-            synchronized (BillingController.class) {
-                if (instance == null) {
-                    instance = new BillingController();
-                }
-            }
-        }
-        return instance;
-    }
-    
+
     @PostMapping("/process")
-    public String processBill(
-            @RequestParam String patientId,
-            @RequestParam String doctorId,
-            @RequestParam String[] treatments) {
+    public String processBill(@RequestBody BillingRequest request) {
         try {
-            Patient patient = patientDao.findById(Long.parseLong(patientId));
-            Doctor doctor = doctorDao.findById(Long.parseLong(doctorId));
-            
-            Hibernate.initialize(doctor.getAppointments());
-            
-            Bill bill = new Bill();
-            bill.setBillNumber("BILL" + System.currentTimeMillis());
-            bill.setPatient(patient);
-            bill.setDoctor(doctor);
-            
-            Hibernate.initialize(bill.getBillDetails());
-            
-            double total = 0.0;
-            Set<BillDetail> details = new HashSet<>();
-            
-            for (String treatment : treatments) {
-                double price = priceList.get(treatment);
-                total += price;
-                
-                BillDetail detail = new BillDetail();
-                detail.setBill(bill);
-                detail.setTreatmentName(treatment);
-                detail.setUnitPrice(price);
-                details.add(detail);
-                
-                Hibernate.initialize(detail);
-            }
-            
-            if (total > 500) {
-                total = total * 0.9;
-            }
-            
-            bill.setTotalAmount(total);
-            bill.setBillDetails(details);
-            
-            try (FileWriter fw = new FileWriter("C:\\hospital\\billing.txt", true)) {
-                fw.write(bill.getBillNumber() + ": $" + total + "\n");
-            }
-            
-            totalRevenue += total;
-            billDao.save(bill);
-            
+            Patient patient = patientService.getById(Long.parseLong(request.getPatientId()));
+            Doctor doctor = doctorService.getById(Long.parseLong(request.getDoctorId()));
+
+            Bill bill = billingService.generateBill(patient, doctor, request.getTreatments(), priceList);
+            billingService.saveBill(bill);
+
+            String filePath = "C:\\hospital\\billing.txt";
+            String fileContent = bill.getBillNumber() + ": $" + bill.getTotalAmount() + "\n";
+            Utils.writeToFile(filePath, fileContent);
+
+            totalRevenue += bill.getTotalAmount();
+
             emailService.sendEmail(
-                "admin@hospital.com",
-                "New Bill Generated",
-                "Bill Number: " + bill.getBillNumber() + "\nTotal: $" + total
+                    "admin@hospital.com",
+                    "New Bill Generated",
+                    "Bill Number: " + bill.getBillNumber() + "\nTotal: $" + bill.getTotalAmount()
             );
-            
+
             return "Bill processed successfully";
         } catch (Exception e) {
             return "Error: " + e.getMessage();
@@ -119,7 +86,12 @@ public class BillingController {
     
     private void recalculateAllPendingBills() {
         for (String billId : pendingBills) {
-            processBill(billId, "RECALC", new String[]{"CONSULTATION"});
+            BillingRequest request = new BillingRequest(
+                    billId,
+                    "RECALC",
+                    List.of("CONSULTATION")
+            );
+            processBill(request);
         }
     }
     

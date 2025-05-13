@@ -1,29 +1,34 @@
-package sae.semestre.six.controller;
+package sae.semestre.six.entities.billing;
 
 import org.junit.jupiter.api.Test;
-import sae.semestre.six.entities.billing.BillingController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import sae.semestre.six.entities.billing.dto.BillingRequest;
 
 import java.io.File;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@SpringBootTest
 public class BillingControllerTest {
-    
-    
-    private BillingController billingController = BillingController.getInstance();
+
+    @Autowired
+    private BillingController billingController;
     
     @Test
     public void testProcessBill() {
         
         File billingFile = new File("C:\\hospital\\billing.txt");
         long initialFileSize = billingFile.length();
-        
-        String result = billingController.processBill(
-            "TEST001",
-            "DOC001",
-            new String[]{"CONSULTATION"}
+
+        BillingRequest request = new BillingRequest(
+                "TEST001",
+                "DOC001",
+                List.of("CONSULTATION")
         );
+        String result = billingController.processBill(request);
         
         
         assertTrue(result.contains("successfully"));

@@ -1,4 +1,4 @@
-package sae.semestre.six.entities.inventory;
+package sae.semestre.six.entities.supplierinvoice;
 
 import jakarta.persistence.*;
 import java.util.Date;

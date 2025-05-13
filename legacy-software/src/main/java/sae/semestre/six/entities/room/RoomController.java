@@ -2,7 +2,7 @@ package sae.semestre.six.entities.room;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import sae.semestre.six.entities.appointment.AppointmentDao;
+import sae.semestre.six.entities.appointment.AppointmentRepository;
 import sae.semestre.six.entities.appointment.Appointment;
 
 import java.util.*;
@@ -12,10 +12,10 @@ import java.util.*;
 public class RoomController {
     
     @Autowired
-    private RoomDao roomDao;
+    private RoomRepository roomDao;
     
     @Autowired
-    private AppointmentDao appointmentDao;
+    private AppointmentRepository appointmentDao;
     
     
     @PostMapping("/assign")

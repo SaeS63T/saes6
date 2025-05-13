@@ -1,9 +1,18 @@
 package sae.semestre.six.entities.prescription;
 
-import sae.semestre.six.base.GenericDao;
-
+import sae.semestre.six.base.AbstractHibernateDao;
+import org.springframework.stereotype.Repository;
 import java.util.List;
 
-public interface PrescriptionDao extends GenericDao<Prescription, Long> {
-    List<Prescription> findByPatientId(Long patientId);
+@Repository
+public class PrescriptionDao extends AbstractHibernateDao<Prescription, Long> implements PrescriptionRepository {
+    
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Prescription> findByPatientId(Long patientId) {
+        return getEntityManager()
+                .createQuery("FROM Prescription WHERE patient.id = :patientId")
+                .setParameter("patientId", patientId)
+                .getResultList();
+    }
 } 
