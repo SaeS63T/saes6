@@ -7,6 +7,7 @@ import sae.semestre.six.entities.billing.dto.BillingRequest;
 
 import java.io.File;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Value;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -16,11 +17,14 @@ public class BillingControllerTest {
 
     @Autowired
     private BillingController billingController;
+
+    @Value("${hospital.billing.text.path}")
+    private String billingTextPath;
     
     @Test
     public void testProcessBill() {
         
-        File billingFile = new File("C:\\hospital\\billing.txt");
+        File billingFile = new File(billingTextPath);
         long initialFileSize = billingFile.length();
 
         BillingRequest request = new BillingRequest(

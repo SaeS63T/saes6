@@ -1,6 +1,7 @@
 package sae.semestre.six.entities.inventory;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import sae.semestre.six.base.Utils;
 import sae.semestre.six.entities.email.EmailService;
@@ -23,7 +24,14 @@ public class InventoryService {
     @Autowired
     private PriceHistoryRepository priceHistoryDao;
 
-    private final EmailService emailService = EmailService.getInstance();
+    @Autowired
+    private EmailService emailService;
+
+    @Value("${hospital.orders.path}")
+    private String ordersFilePath;
+
+    @Value("${hospital.supplier.email}")
+    private String supplierEmail;
 
     public String processSupplierInvoice(SupplierInvoice invoice) {
         try {
@@ -55,7 +63,7 @@ public class InventoryService {
         for (Inventory item : lowStockItems) {
             int reorderQuantity = item.getReorderLevel() * 2;
 
-            String filePath = "C:\\hospital\\orders.txt";
+            String filePath = ordersFilePath;
             String fileContent = "REORDER: " + item.getItemCode() + ", Quantity: " + reorderQuantity + "\n";
 
             try {
@@ -65,7 +73,7 @@ public class InventoryService {
             }
 
             emailService.sendEmail(
-                    "supplier@example.com",
+                    supplierEmail,
                     "Reorder Request",
                     "Please restock " + item.getName() + " (Quantity: " + reorderQuantity + ")"
             );

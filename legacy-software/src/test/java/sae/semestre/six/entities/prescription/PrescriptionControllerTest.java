@@ -1,21 +1,19 @@
 package sae.semestre.six.entities.prescription;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import sae.semestre.six.entities.prescription.PrescriptionController;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 public class PrescriptionControllerTest {
-    
+
+    @Autowired
     private PrescriptionController prescriptionController;
-    
-    @BeforeEach
-    public void setUp() {
-        prescriptionController = new PrescriptionController();
-    }
     
     
     @Test

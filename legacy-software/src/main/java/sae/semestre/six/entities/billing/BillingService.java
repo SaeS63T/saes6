@@ -1,5 +1,6 @@
 package sae.semestre.six.entities.billing;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sae.semestre.six.base.Utils;
@@ -26,6 +27,15 @@ public class BillingService {
     private final DoctorRepository doctorRepository;
     private final EmailService emailService;
     private final MedicalBillingProcessor billingProcessor;
+
+    @Value("${hospital.email.admin}")
+    private String adminEmail;
+
+    @Value("${hospital.billing.text.path}")
+    private String billingTextPath;
+
+    @Value("${hospital.billing.pdf.dir}")
+    private String billingPdfDir;
 
     public BillingService(BillRepository billRepository,
                           PatientRepository patientRepository,
@@ -60,7 +70,7 @@ public class BillingService {
         });
 
         emailService.sendEmail(
-                "admin@hospital.com",
+                adminEmail,
                 "New Bill Generated",
                 "Bill Number: " + bill.getBillNumber() + "\nTotal: $" + bill.getTotalAmount()
         );
@@ -68,7 +78,7 @@ public class BillingService {
         bill.finalizeBill();
         billRepository.save(bill);
 
-        String txtPath = "C:\\hospital\\billing.txt";
+        String txtPath = billingTextPath;
         String fileContent = bill.getBillNumber() + ": $" + bill.getTotalAmount() + "\n";
         Utils.writeToFile(txtPath, fileContent);
 
@@ -84,7 +94,7 @@ public class BillingService {
     }
 
     private void generatePdfBill(Bill bill) {
-        String path = "C:\\hospital\\bills\\" + bill.getBillNumber() + ".pdf";
+        String path = billingPdfDir + bill.getBillNumber() + ".pdf";
         Document document = new Document();
         try {
             PdfWriter.getInstance(document, new FileOutputStream(path));

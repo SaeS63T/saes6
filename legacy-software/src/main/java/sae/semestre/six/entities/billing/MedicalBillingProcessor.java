@@ -1,5 +1,7 @@
 package sae.semestre.six.entities.billing;
 
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -12,11 +14,23 @@ public class MedicalBillingProcessor {
 
     private final Map<String, Double> treatmentPrices = new HashMap<>();
 
+    @Value("${hospital.treatment.defaults:}")
+    private String defaultPrices;
+
     public MedicalBillingProcessor() {
-        // Initialize with some default treatments and prices
-        treatmentPrices.put("CONSULTATION", 50.0);
-        treatmentPrices.put("XRAY", 100.0);
-        treatmentPrices.put("BLOOD_TEST", 30.0);
+    }
+
+    @PostConstruct
+    private void init() {
+        if (defaultPrices != null && !defaultPrices.isBlank()) {
+            String[] pairs = defaultPrices.split(",");
+            for (String pair : pairs) {
+                String[] parts = pair.split(":");
+                if (parts.length == 2) {
+                    treatmentPrices.put(parts[0], Double.parseDouble(parts[1]));
+                }
+            }
+        }
     }
 
     public void updatePrice(String treatment, double price) {
