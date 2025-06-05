@@ -23,7 +23,8 @@ public class SchedulingController {
             String result = schedulingService.scheduleAppointment(
                     request.getDoctorId(),
                     request.getPatientId(),
-                    request.getAppointmentDate()
+                    request.getAppointmentDate(),
+                    request.getRoomNumber()
             );
             return ResponseEntity.ok(result);
         } catch (Exception e) {
