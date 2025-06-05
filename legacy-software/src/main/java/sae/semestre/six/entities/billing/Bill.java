@@ -3,6 +3,9 @@ package sae.semestre.six.entities.billing;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import jakarta.persistence.*;
 import sae.semestre.six.entities.doctor.Doctor;
 import sae.semestre.six.entities.patient.Patient;
@@ -38,6 +41,9 @@ public class Bill {
     @Column(name = "status")
     private Status status = Status.PENDING;
 
+    @Column(name = "integrity_hash")
+    private String integrityHash;
+
     @OneToMany(mappedBy = "bill", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<BillDetail> details = new HashSet<>();
 
@@ -62,6 +68,7 @@ public class Bill {
             throw new IllegalStateException("Bill must contain at least one detail to be finalized.");
         }
         this.status = Status.FINALIZED;
+        this.integrityHash = computeIntegrityHash();
     }
 
     public double getTotalAmount() {
@@ -80,6 +87,43 @@ public class Bill {
         }
     }
 
+    @PreUpdate
+    private void preventUpdateIfFinalized() {
+        if (isFinalized()) {
+            throw new IllegalStateException("Cannot update a finalized bill.");
+        }
+    }
+
+    private String computeIntegrityHash() {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            StringBuilder sb = new StringBuilder();
+            sb.append(billNumber)
+              .append(billDate.getTime())
+              .append(patient.getId())
+              .append(doctor.getId())
+              .append(status.name());
+            details.stream()
+                   .sorted((a,b) -> a.getTreatmentName().compareTo(b.getTreatmentName()))
+                   .forEach(d -> sb.append(d.getTreatmentName())
+                                   .append(d.getQuantity())
+                                   .append(d.getUnitPrice()));
+            byte[] hash = digest.digest(sb.toString().getBytes(StandardCharsets.UTF_8));
+            StringBuilder hex = new StringBuilder();
+            for (byte b : hash) {
+                hex.append(String.format("%02x", b));
+            }
+            return hex.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("Unable to compute hash", e);
+        }
+    }
+
+    public boolean verifyIntegrity() {
+        if (integrityHash == null) return false;
+        return integrityHash.equals(computeIntegrityHash());
+    }
+
     // Getters (pas de setters publics sauf si nécessaires pour JPA)
 
     public Long getId() { return id; }
@@ -89,4 +133,5 @@ public class Bill {
     public Date getBillDate() { return billDate; }
     public Set<BillDetail> getDetails() { return details; }
     public Status getStatus() { return status; }
-} 
+    public String getIntegrityHash() { return integrityHash; }
+}
