@@ -3,6 +3,10 @@ package sae.semestre.six.entities.billing;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sae.semestre.six.base.Utils;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.pdf.PdfWriter;
 import sae.semestre.six.entities.doctor.DoctorRepository;
 import sae.semestre.six.entities.email.EmailService;
 import sae.semestre.six.entities.patient.Patient;
@@ -10,6 +14,7 @@ import sae.semestre.six.entities.doctor.Doctor;
 import sae.semestre.six.entities.patient.PatientRepository;
 
 import java.io.IOException;
+import java.io.FileOutputStream;
 import java.util.Arrays;
 import java.util.List;
 
@@ -63,9 +68,11 @@ public class BillingService {
         bill.finalizeBill();
         billRepository.save(bill);
 
-        String filePath = "C:\\hospital\\billing.txt";
+        String txtPath = "C:\\hospital\\billing.txt";
         String fileContent = bill.getBillNumber() + ": $" + bill.getTotalAmount() + "\n";
-        Utils.writeToFile(filePath, fileContent);
+        Utils.writeToFile(txtPath, fileContent);
+
+        generatePdfBill(bill);
     }
 
     public void updateTreatmentPrice(String treatment, double price) {
@@ -74,5 +81,25 @@ public class BillingService {
 
     public List<String> getFormattedPrices() {
         return billingProcessor.getFormattedPrices();
+    }
+
+    private void generatePdfBill(Bill bill) {
+        String path = "C:\\hospital\\bills\\" + bill.getBillNumber() + ".pdf";
+        Document document = new Document();
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream(path));
+            document.open();
+            document.add(new Paragraph("Bill Number: " + bill.getBillNumber()));
+            document.add(new Paragraph("Total: $" + bill.getTotalAmount()));
+            document.close();
+
+            emailService.sendEmail(
+                    bill.getPatient().getPatientNumber() + "@example.com",
+                    "Your digital invoice",
+                    "Your invoice is available at " + path
+            );
+        } catch (DocumentException | IOException e) {
+            System.out.println("Failed to generate PDF: " + e.getMessage());
+        }
     }
 }
