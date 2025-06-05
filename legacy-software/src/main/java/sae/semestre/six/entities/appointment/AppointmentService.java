@@ -20,4 +20,8 @@ public class AppointmentService {
         return appointmentDao.findByDoctorId(doctorId);
     }
 
+    public Appointment save(Appointment appointment) {
+        return appointmentDao.save(appointment);
+    }
+
 }

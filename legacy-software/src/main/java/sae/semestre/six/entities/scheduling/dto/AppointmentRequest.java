@@ -7,15 +7,18 @@ public class AppointmentRequest {
     private Long doctorId;
     private Long patientId;
     private Date appointmentDate;
+    private String roomNumber;
 
     public AppointmentRequest(
             Long doctorId,
             Long patientId,
-            Date appointmentDate
+            Date appointmentDate,
+            String roomNumber
     ) {
         this.doctorId = doctorId;
         this.patientId = patientId;
         this.appointmentDate = appointmentDate;
+        this.roomNumber = roomNumber;
     }
 
     public Long getDoctorId() {
@@ -40,5 +43,13 @@ public class AppointmentRequest {
 
     public void setAppointmentDate(Date appointmentDate) {
         this.appointmentDate = appointmentDate;
+    }
+
+    public String getRoomNumber() {
+        return roomNumber;
+    }
+
+    public void setRoomNumber(String roomNumber) {
+        this.roomNumber = roomNumber;
     }
 }

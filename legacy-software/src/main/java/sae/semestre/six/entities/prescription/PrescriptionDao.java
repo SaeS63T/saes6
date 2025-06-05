@@ -15,4 +15,12 @@ public class PrescriptionDao extends AbstractHibernateDao<Prescription, Long> im
                 .setParameter("patientId", patientId)
                 .getResultList();
     }
-} 
+
+    @Override
+    public Prescription findByPrescriptionNumber(String number) {
+        return (Prescription) getEntityManager()
+                .createQuery("FROM Prescription WHERE prescriptionNumber = :num")
+                .setParameter("num", number)
+                .getSingleResult();
+    }
+}
