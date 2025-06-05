@@ -25,7 +25,47 @@ public class PriceHistory {
     @Column(name = "change_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date changeDate = new Date();
-    
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
+    public Double getOldPrice() {
+        return oldPrice;
+    }
+
+    public void setOldPrice(Double oldPrice) {
+        this.oldPrice = oldPrice;
+    }
+
+    public Double getNewPrice() {
+        return newPrice;
+    }
+
+    public void setNewPrice(Double newPrice) {
+        this.newPrice = newPrice;
+    }
+
+    public Date getChangeDate() {
+        return changeDate;
+    }
+
+    public void setChangeDate(Date changeDate) {
+        this.changeDate = changeDate;
+    }
+
     
     public Double getPriceIncrease() {
         return newPrice - oldPrice;

@@ -6,6 +6,8 @@ import sae.semestre.six.base.Utils;
 import sae.semestre.six.entities.email.EmailService;
 import sae.semestre.six.entities.supplierinvoice.SupplierInvoice;
 import sae.semestre.six.entities.supplierinvoice.SupplierInvoiceDetail;
+import sae.semestre.six.entities.pricehistory.PriceHistory;
+import sae.semestre.six.entities.pricehistory.PriceHistoryRepository;
 
 import java.io.IOException;
 import java.util.Date;
@@ -17,6 +19,9 @@ public class InventoryService {
 
     @Autowired
     private InventoryRepository inventoryDao;
+
+    @Autowired
+    private PriceHistoryRepository priceHistoryDao;
 
     private final EmailService emailService = EmailService.getInstance();
 
@@ -67,5 +72,30 @@ public class InventoryService {
         }
 
         return "Reorder requests sent for " + lowStockItems.size() + " items";
+    }
+
+    public List<Inventory> getAllItems() {
+        return inventoryDao.findAll();
+    }
+
+    public String updatePrice(String itemCode, double price) {
+        Inventory inventory = inventoryDao.findByItemCode(itemCode);
+        Double oldPrice = inventory.getUnitPrice();
+
+        inventoryDao.updatePrice(itemCode, price);
+
+        PriceHistory history = new PriceHistory();
+        history.setInventory(inventory);
+        history.setOldPrice(oldPrice);
+        history.setNewPrice(price);
+        history.setChangeDate(new Date());
+        priceHistoryDao.save(history);
+
+        return "Price updated";
+    }
+
+    public List<PriceHistory> getPriceHistory(String itemCode) {
+        Inventory inventory = inventoryDao.findByItemCode(itemCode);
+        return priceHistoryDao.findByInventory(inventory);
     }
 }
