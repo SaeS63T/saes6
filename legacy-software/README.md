@@ -4,3 +4,4 @@
 ## Swagger
 - http://localhost:8045/hospital/swagger-ui.html
 
+Un fichier `src/main/resources/data.sql` contient un jeu de données complet pour initialiser toutes les tables de la base.

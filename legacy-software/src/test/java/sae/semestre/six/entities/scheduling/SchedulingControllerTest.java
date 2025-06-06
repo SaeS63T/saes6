@@ -28,10 +28,7 @@ public class SchedulingControllerTest {
 
     private static class AppointmentRequestImpl extends AppointmentRequest {
         AppointmentRequestImpl(Long d, Long p, Date date, String room) {
-            setDoctorId(d);
-            setPatientId(p);
-            setAppointmentDate(date);
-            setRoomNumber(room);
+            super(d, p, date, room);
         }
     }
 }
