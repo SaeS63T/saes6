@@ -5,54 +5,48 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "bill_details")
 public class BillDetail {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    @ManyToOne
-    @JoinColumn(name = "bill_id", nullable = false)
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "bill_id")
     private Bill bill;
-    
-    @Column(name = "treatment_name")
+
+    @Column(name = "treatment_name", nullable = false)
     private String treatmentName;
-    
-    @Column(name = "quantity")
-    private Integer quantity = 1;
-    
-    @Column(name = "unit_price")
-    private Double unitPrice = 0.0;
-    
-    @Column(name = "line_total")
-    private Double lineTotal = 0.0;
-    
-    
-    public void calculateLineTotal() {
-        this.lineTotal = this.quantity * this.unitPrice;
-    }
-    
-    
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    
-    public Bill getBill() { return bill; }
-    public void setBill(Bill bill) { this.bill = bill; }
-    
-    public String getTreatmentName() { return treatmentName; }
-    public void setTreatmentName(String treatmentName) { this.treatmentName = treatmentName; }
-    
-    public Integer getQuantity() { return quantity; }
-    public void setQuantity(Integer quantity) { 
+
+    @Column(name = "quantity", nullable = false)
+    private Integer quantity;
+
+    @Column(name = "unit_price", nullable = false)
+    private Double unitPrice;
+
+    protected BillDetail() {}
+
+    public BillDetail(String treatmentName, int quantity, double unitPrice) {
+        if (quantity <= 0 || unitPrice < 0) {
+            throw new IllegalArgumentException("Quantity must be > 0 and price >= 0");
+        }
+        this.treatmentName = treatmentName;
         this.quantity = quantity;
-        calculateLineTotal(); 
-    }
-    
-    public Double getUnitPrice() { return unitPrice; }
-    public void setUnitPrice(Double unitPrice) { 
         this.unitPrice = unitPrice;
-        calculateLineTotal(); 
     }
-    
-    public Double getLineTotal() { return lineTotal; }
-    public void setLineTotal(Double lineTotal) { this.lineTotal = lineTotal; }
+
+    public double getTotal() {
+        return this.quantity * this.unitPrice;
+    }
+
+    // Package-private: seul Bill peut l’appeler
+    void setBill(Bill bill) {
+        this.bill = bill;
+    }
+
+    // Getters (pas de setters publics)
+    public Long getId() { return id; }
+    public Bill getBill() { return bill; }
+    public String getTreatmentName() { return treatmentName; }
+    public Integer getQuantity() { return quantity; }
+    public Double getUnitPrice() { return unitPrice; }
 } 

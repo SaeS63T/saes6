@@ -1,146 +1,60 @@
 package sae.semestre.six.entities.billing;
 
-import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import sae.semestre.six.entities.doctor.DoctorDao;
-import sae.semestre.six.entities.patient.PatientDao;
-import sae.semestre.six.entities.doctor.Doctor;
-import sae.semestre.six.entities.patient.Patient;
-import sae.semestre.six.entities.email.EmailService;
-import java.util.*;
-import java.io.*;
-import org.hibernate.Hibernate;
+import org.springframework.web.bind.annotation.*;
+import sae.semestre.six.entities.billing.dto.BillingRequest;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/billing")
 public class BillingController {
-    
-    private static volatile BillingController instance;
-    private Map<String, Double> priceList = new HashMap<>();
-    private double totalRevenue = 0.0;
-    private List<String> pendingBills = new ArrayList<>();
-    
+
+    private final BillingService billingService;
+
     @Autowired
-    private BillDao billDao;
-    
-    @Autowired
-    private PatientDao patientDao;
-    
-    @Autowired
-    private DoctorDao doctorDao;
-    
-    private final EmailService emailService = EmailService.getInstance();
-    
-    private BillingController() {
-        priceList.put("CONSULTATION", 50.0);
-        priceList.put("XRAY", 150.0);
-        priceList.put("CHIRURGIE", 1000.0);
+    public BillingController(BillingService billingService) {
+        this.billingService = billingService;
     }
-    
-    public static BillingController getInstance() {
-        if (instance == null) {
-            synchronized (BillingController.class) {
-                if (instance == null) {
-                    instance = new BillingController();
-                }
-            }
-        }
-        return instance;
-    }
-    
+
     @PostMapping("/process")
-    public String processBill(
-            @RequestParam String patientId,
-            @RequestParam String doctorId,
-            @RequestParam String[] treatments) {
+    public String processBill(@RequestBody BillingRequest request) {
         try {
-            Patient patient = patientDao.findById(Long.parseLong(patientId));
-            Doctor doctor = doctorDao.findById(Long.parseLong(doctorId));
-            
-            Hibernate.initialize(doctor.getAppointments());
-            
-            Bill bill = new Bill();
-            bill.setBillNumber("BILL" + System.currentTimeMillis());
-            bill.setPatient(patient);
-            bill.setDoctor(doctor);
-            
-            Hibernate.initialize(bill.getBillDetails());
-            
-            double total = 0.0;
-            Set<BillDetail> details = new HashSet<>();
-            
-            for (String treatment : treatments) {
-                double price = priceList.get(treatment);
-                total += price;
-                
-                BillDetail detail = new BillDetail();
-                detail.setBill(bill);
-                detail.setTreatmentName(treatment);
-                detail.setUnitPrice(price);
-                details.add(detail);
-                
-                Hibernate.initialize(detail);
-            }
-            
-            if (total > 500) {
-                total = total * 0.9;
-            }
-            
-            bill.setTotalAmount(total);
-            bill.setBillDetails(details);
-            
-            try (FileWriter fw = new FileWriter("C:\\hospital\\billing.txt", true)) {
-                fw.write(bill.getBillNumber() + ": $" + total + "\n");
-            }
-            
-            totalRevenue += total;
-            billDao.save(bill);
-            
-            emailService.sendEmail(
-                "admin@hospital.com",
-                "New Bill Generated",
-                "Bill Number: " + bill.getBillNumber() + "\nTotal: $" + total
+            billingService.processBill(
+                    request.getPatientId(),
+                    request.getDoctorId(),
+                    request.getTreatments().toArray(new String[0])
             );
-            
-            return "Bill processed successfully";
+            return "Bill processed successfully.";
         } catch (Exception e) {
             return "Error: " + e.getMessage();
         }
     }
-    
+
     @PutMapping("/price")
-    public String updatePrice(
-            @RequestParam String treatment,
-            @RequestParam double price) {
-        priceList.put(treatment, price);
-        recalculateAllPendingBills();
+    public String updatePrice(@RequestParam String treatment, @RequestParam double price) {
+        billingService.updateTreatmentPrice(treatment, price);
         return "Price updated";
     }
-    
-    private void recalculateAllPendingBills() {
-        for (String billId : pendingBills) {
-            processBill(billId, "RECALC", new String[]{"CONSULTATION"});
-        }
-    }
-    
+
     @GetMapping("/prices")
-    public Map<String, Double> getPrices() {
-        return priceList;
+    public List<String> getPrices() {
+        return billingService.getFormattedPrices();
     }
-    
+
     @GetMapping("/insurance")
     public String calculateInsurance(@RequestParam double amount) {
-        double coverage = amount;
+        double coverage = amount; // Placeholder logic
         return "Insurance coverage: $" + coverage;
     }
-    
+
     @GetMapping("/revenue")
     public String getTotalRevenue() {
-        return "Total Revenue: $" + totalRevenue;
+        return "Not tracked here anymore. Use a dedicated reporting module.";
     }
-    
+
     @GetMapping("/pending")
-    public List<String> getPendingBills() {
-        return pendingBills;
+    public String getPendingBills() {
+        return "Pending bill tracking is deprecated.";
     }
-} 
+}

@@ -37,7 +37,6 @@ public class Appointment {
     @Temporal(TemporalType.TIMESTAMP)
     private Date appointmentDate;
 
-
     @Column(name = "status")
     private String status;
 

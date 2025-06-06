@@ -3,8 +3,8 @@ package sae.semestre.six.entities.patienthistory;
 import jakarta.persistence.*;
 import sae.semestre.six.entities.appointment.Appointment;
 import sae.semestre.six.entities.billing.Bill;
-import sae.semestre.six.entities.medicalrecord.LabResult;
-import sae.semestre.six.entities.prescription.Treatment;
+import sae.semestre.six.entities.labresult.LabResult;
+import sae.semestre.six.entities.treatment.Treatment;
 import sae.semestre.six.entities.patient.Patient;
 import sae.semestre.six.entities.prescription.Prescription;
 

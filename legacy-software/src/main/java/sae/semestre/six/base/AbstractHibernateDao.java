@@ -46,12 +46,14 @@ public abstract class AbstractHibernateDao<T, ID extends Serializable> implement
     }
     
     @Override
-    public void save(T entity) {
+    public T save(T entity) {
         try {
             entityManager.persist(entity);
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
+        } finally {
+            return entity;
         }
     }
     

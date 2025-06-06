@@ -1,92 +1,48 @@
 package sae.semestre.six.entities.billing;
 
-import java.util.*;
-import java.io.*;
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+@Component
 public class MedicalBillingProcessor {
-    private static volatile MedicalBillingProcessor instance;
-    private static final String BILLING_FILE = "C:\\hospital\\billing.txt";
-    
-    private Map<String, Double> priceList = new HashMap<>();
-    private List<String> pendingBills = new ArrayList<>();
-    private double totalRevenue = 0.0;
-    
-    private MedicalBillingProcessor() {
-        priceList.put("CONSULTATION", 50.0);
-        priceList.put("XRAY", 150.0);
-        priceList.put("SURGERY", 1000.0);
+
+    private final Map<String, Double> treatmentPrices = new HashMap<>();
+
+    @Value("${hospital.treatment.defaults:}")
+    private String defaultPrices;
+
+    public MedicalBillingProcessor() {
     }
-    
-    public static MedicalBillingProcessor getInstance() {
-        if (instance == null) {
-            synchronized (MedicalBillingProcessor.class) {
-                if (instance == null) {
-                    instance = new MedicalBillingProcessor();
+
+    @PostConstruct
+    private void init() {
+        if (defaultPrices != null && !defaultPrices.isBlank()) {
+            String[] pairs = defaultPrices.split(",");
+            for (String pair : pairs) {
+                String[] parts = pair.split(":");
+                if (parts.length == 2) {
+                    treatmentPrices.put(parts[0], Double.parseDouble(parts[1]));
                 }
             }
         }
-        return instance;
     }
-    
-    public void processBilling(String patientId, String doctorId, String[] treatments) {
-        double total = 0.0;
-        String billId = "BILL" + System.currentTimeMillis();
-        
-        String billDetails = "";
-        billDetails += "Bill ID: " + billId + "\n";
-        billDetails += "Patient: " + patientId + "\n";
-        billDetails += "Doctor: " + doctorId + "\n";
-        
-        for (String treatment : treatments) {
-            
-            double price = priceList.get(treatment);
-            total += price;
-            billDetails += treatment + ": $" + price + "\n";
-        }
 
-        if (total > 500) {
-            total = total * 0.9; 
+    public void updatePrice(String treatment, double price) {
+        if (price < 0) {
+            throw new IllegalArgumentException("Price cannot be negative.");
         }
-        
-        billDetails += "Total: $" + total + "\n";
-        
-        
-        try {
-            FileWriter fw = new FileWriter(BILLING_FILE, true);
-            fw.write(billDetails);
-            fw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        
-        
-        pendingBills.add(billId);
-        totalRevenue += total;
+        treatmentPrices.put(treatment, price);
     }
-    
-    
-    public void updatePrices(String treatment, double newPrice) {
-        priceList.put(treatment, newPrice);
-        
-        recalculateAllPendingBills();
+
+    public List<String> getFormattedPrices() {
+        return treatmentPrices.entrySet().stream()
+                .map(entry -> entry.getKey() + ": $" + entry.getValue())
+                .collect(Collectors.toList());
     }
-    
-    
-    private void recalculateAllPendingBills() {
-        for (String billId : pendingBills) {
-            
-            processBilling(billId, "RECALC", new String[]{"CONSULTATION"});
-        }
-    }
-    
-    
-    public Map<String, Double> getPriceList() {
-        return priceList; 
-    }
-    
-    
-    public double calculateInsurance(double billAmount) {
-        
-        return 0.0;
-    }
-} 
+}

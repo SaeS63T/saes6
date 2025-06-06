@@ -2,6 +2,7 @@
 
 - http://localhost:8888/
 - http://localhost:8888/remboursement/search/remboursementByNomProduitAndNomAssurance
+- http://localhost:8888/swagger-ui/index.html
 
 ## Jeu de données
 ```
@@ -38,3 +39,4 @@ VALUES
 ('MATERNITE', 'SECUREPLUS', 2000.0, 80.0, 1600.0),
 ('MATERNITE', 'SANTEVIE', 2000.0, 75.0, 1500.0);
 ```
+Les mêmes instructions d'insertion se trouvent dans `src/main/resources/data.sql` afin que les données soient chargées automatiquement au démarrage du service.

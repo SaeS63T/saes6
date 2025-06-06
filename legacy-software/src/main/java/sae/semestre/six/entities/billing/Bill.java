@@ -1,81 +1,137 @@
 package sae.semestre.six.entities.billing;
 
 import java.util.Date;
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import jakarta.persistence.*;
 import sae.semestre.six.entities.doctor.Doctor;
-import sae.semestre.six.entities.patienthistory.PatientHistory;
 import sae.semestre.six.entities.patient.Patient;
 
 @Entity
 @Table(name = "bills")
 public class Bill {
-    
+
+    public enum Status {
+        PENDING, PAID, CANCELLED, FINALIZED
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(name = "bill_number", unique = true)
     private String billNumber;
-    
+
     @ManyToOne
     @JoinColumn(name = "patient_id")
     private Patient patient;
-    
+
     @ManyToOne
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
-    
+
     @Column(name = "bill_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date billDate = new Date();
-    
-    @Column(name = "total_amount")
-    private Double totalAmount = 0.0;
-    
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private String status = "PENDING";
-    
+    private Status status = Status.PENDING;
+
+    @Column(name = "integrity_hash")
+    private String integrityHash;
+
     @OneToMany(mappedBy = "bill", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private Set<BillDetail> billDetails = new HashSet<>();
-    
-    
-    @Column(name = "created_date")
-    private Date createdDate = new Date();
-    
-    @Column(name = "last_modified")
-    private Date lastModified = new Date();
+    private Set<BillDetail> details = new HashSet<>();
 
-    @ManyToOne
-    private PatientHistory patientHistory;
-    
-    
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    
-    public String getBillNumber() { return billNumber; }
+    protected Bill() { }
 
-    public void setBillNumber(String billNumber) { this.billNumber = billNumber; }
-    
-    public Patient getPatient() { return patient; }
-    public void setPatient(Patient patient) { this.patient = patient; }
-    
-    public Doctor getDoctor() { return doctor; }
-    public void setDoctor(Doctor doctor) { this.doctor = doctor; }
-    
-    public Date getBillDate() { return billDate; }
-    public void setBillDate(Date billDate) { this.billDate = billDate; }
-    
-    public Double getTotalAmount() { return totalAmount; }
-    public void setTotalAmount(Double totalAmount) { this.totalAmount = totalAmount; }
-    
-    public String getStatus() { return status; }
-    public void setStatus(String status) { 
-        this.status = status;
-        this.lastModified = new Date(); 
+    public Bill(Patient patient, Doctor doctor) {
+        this.patient = patient;
+        this.doctor = doctor;
+        this.billDate = new Date();
+        this.status = Status.PENDING;
     }
-    
-    public Set<BillDetail> getBillDetails() { return billDetails; }
-    public void setBillDetails(Set<BillDetail> billDetails) { this.billDetails = billDetails; }
-} 
+
+    public void addDetail(String name, int quantity, double price) {
+        ensureModifiable();
+        BillDetail detail = new BillDetail(name, quantity, price);
+        detail.setBill(this);
+        this.details.add(detail);
+    }
+
+    public void finalizeBill() {
+        if (details.isEmpty()) {
+            throw new IllegalStateException("Bill must contain at least one detail to be finalized.");
+        }
+        this.status = Status.FINALIZED;
+        this.integrityHash = computeIntegrityHash();
+    }
+
+    public double getTotalAmount() {
+        return details.stream()
+                .mapToDouble(BillDetail::getTotal)
+                .sum();
+    }
+
+    public boolean isFinalized() {
+        return this.status == Status.FINALIZED;
+    }
+
+    private void ensureModifiable() {
+        if (isFinalized()) {
+            throw new IllegalStateException("Cannot modify a finalized bill.");
+        }
+    }
+
+    @PreUpdate
+    private void preventUpdateIfFinalized() {
+        if (isFinalized()) {
+            throw new IllegalStateException("Cannot update a finalized bill.");
+        }
+    }
+
+    private String computeIntegrityHash() {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            StringBuilder sb = new StringBuilder();
+            sb.append(billNumber)
+              .append(billDate.getTime())
+              .append(patient.getId())
+              .append(doctor.getId())
+              .append(status.name());
+            details.stream()
+                   .sorted((a,b) -> a.getTreatmentName().compareTo(b.getTreatmentName()))
+                   .forEach(d -> sb.append(d.getTreatmentName())
+                                   .append(d.getQuantity())
+                                   .append(d.getUnitPrice()));
+            byte[] hash = digest.digest(sb.toString().getBytes(StandardCharsets.UTF_8));
+            StringBuilder hex = new StringBuilder();
+            for (byte b : hash) {
+                hex.append(String.format("%02x", b));
+            }
+            return hex.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("Unable to compute hash", e);
+        }
+    }
+
+    public boolean verifyIntegrity() {
+        if (integrityHash == null) return false;
+        return integrityHash.equals(computeIntegrityHash());
+    }
+
+    // Getters (pas de setters publics sauf si nécessaires pour JPA)
+
+    public Long getId() { return id; }
+    public String getBillNumber() { return billNumber; }
+    public Patient getPatient() { return patient; }
+    public Doctor getDoctor() { return doctor; }
+    public Date getBillDate() { return billDate; }
+    public Set<BillDetail> getDetails() { return details; }
+    public Status getStatus() { return status; }
+    public String getIntegrityHash() { return integrityHash; }
+}

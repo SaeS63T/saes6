@@ -22,6 +22,11 @@ INSERT INTO medical_records (record_number, patient_id, diagnosis, treatment, pr
 ('DM002', 2, 'Rhinopharyngite', 'Traitement symptomatique', 'Paracétamol', 'Repos conseillé', '2024-02-15', 2, '110/70', 38.5, 25.0),
 ('DM003', 3, 'Migraine chronique', 'Traitement préventif', 'Antimigraineux', 'Suivi régulier nécessaire', '2024-02-15', 3, '120/80', 36.8, 65.0);
 
+-- Insertion de l'historique des patients
+INSERT INTO patient_history (patient_id, visit_date, diagnosis, symptoms, notes) VALUES
+(1, '2024-02-15', 'Hypertension artérielle', 'Maux de tête, vertiges', 'Patient à surveiller régulièrement'),
+(2, '2024-02-15', 'Rhinopharyngite', 'Fièvre, congestion nasale', 'Évolution favorable'),
+(3, '2024-02-15', 'Migraine chronique', 'Céphalées intenses', 'Traitement préventif mis en place');
 -- Insertion des résultats de laboratoire
 INSERT INTO lab_results (patient_history_id, test_name, result_value, test_date, notes) VALUES
 (1, 'Numération formule sanguine', 'Normal', '2024-02-15', 'Pas d''anomalie détectée'),
@@ -41,10 +46,10 @@ INSERT INTO prescriptions (prescription_number, patient_id, medicines, notes, to
 ('ORD003', 3, 'Sumatriptan 50mg', 'Prendre dès les premiers symptômes', 35.80, true, true);
 
 -- Insertion des factures
-INSERT INTO bills (bill_number, patient_id, doctor_id, bill_date, total_amount, status) VALUES
-('FAC001', 1, 1, '2024-02-15', 150.00, 'PAYÉE'),
-('FAC002', 2, 2, '2024-02-15', 80.00, 'EN ATTENTE'),
-('FAC003', 3, 3, '2024-02-15', 120.00, 'PAYÉE');
+INSERT INTO bills (bill_number, patient_id, doctor_id, bill_date, status) VALUES
+('FAC001', 1, 1, '2024-02-15', 'PAYÉE'),
+('FAC002', 2, 2, '2024-02-15', 'EN ATTENTE'),
+('FAC003', 3, 3, '2024-02-15', 'PAYÉE');
 
 -- Insertion des détails des factures
 INSERT INTO bill_details (bill_id, treatment_name, quantity, unit_price, line_total) VALUES
@@ -58,6 +63,18 @@ INSERT INTO insurance (policy_number, patient_id, provider, coverage_percentage,
 ('POL002', 2, 'MutuelleSanté', 90.00, 3000.00, '2025-12-31'),
 ('POL003', 3, 'AssurMed', 75.00, 1500.00, '2025-12-31');
 
+-- Insertion de l'inventaire
+INSERT INTO inventory (item_code, name, quantity, unit_price, reorder_level, last_restocked) VALUES
+('MED001', 'Paracétamol 500mg', 1000, 0.15, 200, '2024-02-01 10:00:00'),
+('MED002', 'Amoxicilline 1g', 500, 0.45, 100, '2024-02-01 10:00:00'),
+('MAT001', 'Seringues 10ml', 2000, 0.25, 500, '2024-02-01 10:00:00'),
+('PRO001', 'Gants médicaux M', 5000, 0.10, 1000, '2024-02-01 10:00:00'),
+('HYG001', 'Solution hydroalcoolique', 200, 3.50, 50, '2024-02-01 10:00:00'),
+('PAN001', 'Compresses stériles', 3000, 0.05, 500, '2024-02-01 10:00:00'),
+('PAN002', 'Sparadrap hypoallergénique', 150, 2.20, 30, '2024-02-01 10:00:00'),
+('MED003', 'Bétabloquant 50mg', 300, 0.30, 100, '2024-02-01 10:00:00'),
+('MED004', 'Sumatriptan 50mg', 200, 1.20, 50, '2024-02-01 10:00:00'),
+('PRO002', 'Masques chirurgicaux', 1000, 5.00, 200, '2024-02-01 10:00:00');
 -- Insertion des factures fournisseurs
 INSERT INTO supplier_invoices (invoice_number, supplier_name, invoice_date, total_amount) VALUES
 ('FOUR001', 'Pharmacie Centrale', '2024-02-15', 1200.00),
@@ -76,21 +93,4 @@ INSERT INTO price_history (inventory_id, old_price, new_price, change_date) VALU
 (2, 450.00, 500.00, '2024-01-15'),
 (3, 3.50, 4.00, '2024-02-01');
 
--- Insertion de l'historique des patients
-INSERT INTO patient_history (patient_id, visit_date, diagnosis, symptoms, notes) VALUES
-(1, '2024-02-15', 'Hypertension artérielle', 'Maux de tête, vertiges', 'Patient à surveiller régulièrement'),
-(2, '2024-02-15', 'Rhinopharyngite', 'Fièvre, congestion nasale', 'Évolution favorable'),
-(3, '2024-02-15', 'Migraine chronique', 'Céphalées intenses', 'Traitement préventif mis en place');
 
--- Insertion de l'inventaire
-INSERT INTO inventory (item_code, name, quantity, unit_price, reorder_level, last_restocked) VALUES
-('MED001', 'Paracétamol 500mg', 1000, 0.15, 200, '2024-02-01 10:00:00'),
-('MED002', 'Amoxicilline 1g', 500, 0.45, 100, '2024-02-01 10:00:00'),
-('MAT001', 'Seringues 10ml', 2000, 0.25, 500, '2024-02-01 10:00:00'),
-('PRO001', 'Gants médicaux M', 5000, 0.10, 1000, '2024-02-01 10:00:00'),
-('HYG001', 'Solution hydroalcoolique', 200, 3.50, 50, '2024-02-01 10:00:00'),
-('PAN001', 'Compresses stériles', 3000, 0.05, 500, '2024-02-01 10:00:00'),
-('PAN002', 'Sparadrap hypoallergénique', 150, 2.20, 30, '2024-02-01 10:00:00'),
-('MED003', 'Bétabloquant 50mg', 300, 0.30, 100, '2024-02-01 10:00:00'),
-('MED004', 'Sumatriptan 50mg', 200, 1.20, 50, '2024-02-01 10:00:00'),
-('PRO002', 'Masques chirurgicaux', 1000, 5.00, 200, '2024-02-01 10:00:00'); 
