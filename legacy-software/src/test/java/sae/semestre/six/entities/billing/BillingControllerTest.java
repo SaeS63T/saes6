@@ -55,6 +55,7 @@ public class BillingControllerTest {
     @Test
     public void testUpdatePrice() {
         billingController.updatePrice("CONSULTATION", 75.0);
-        assertEquals(75.0, billingController.getPrices().get("CONSULTATION"), 0.01);
+        List<String> prices = billingController.getPrices();
+        assertTrue(prices.contains("CONSULTATION: $75.00"));
     }
 } 
