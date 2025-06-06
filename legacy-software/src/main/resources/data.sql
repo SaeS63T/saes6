@@ -1,3 +1,5 @@
+
+
 -- Insertion des médecins
 INSERT INTO doctors (doctor_number, first_name, last_name, specialization, phone_number, email, department) VALUES
 ('DR001', 'Pierre', 'Dubois', 'Cardiologie', '0123456789', 'pierre.dubois@hopital.fr', 'Cardiologie'),
@@ -47,15 +49,15 @@ INSERT INTO prescriptions (prescription_number, patient_id, medicines, notes, to
 
 -- Insertion des factures
 INSERT INTO bills (bill_number, patient_id, doctor_id, bill_date, status) VALUES
-('FAC001', 1, 1, '2024-02-15', 'PAYÉE'),
-('FAC002', 2, 2, '2024-02-15', 'EN ATTENTE'),
-('FAC003', 3, 3, '2024-02-15', 'PAYÉE');
+('FAC001', 1, 1, '2024-02-15', 'PAID'),
+('FAC002', 2, 2, '2024-02-15', 'PAID'),
+('FAC003', 3, 3, '2024-02-15', 'PAID');
 
 -- Insertion des détails des factures
-INSERT INTO bill_details (bill_id, treatment_name, quantity, unit_price, line_total) VALUES
-(1, 'Consultation cardiologique', 1, 150.00, 150.00),
-(2, 'Consultation pédiatrique', 1, 80.00, 80.00),
-(3, 'Consultation neurologique', 1, 120.00, 120.00);
+INSERT INTO bill_details (bill_id, treatment_name, quantity, unit_price) VALUES
+(1, 'Consultation cardiologique', 1, 150.00),
+(2, 'Consultation pédiatrique', 1, 80.00),
+(3, 'Consultation neurologique', 1, 120.00);
 
 -- Insertion des assurances
 INSERT INTO insurance (policy_number, patient_id, provider, coverage_percentage, max_coverage, expiry_date) VALUES

@@ -2374,3 +2374,231 @@ Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL synta
 	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:261) ~[spring-jdbc-6.1.5.jar:6.1.5]
 	... 28 common frames omitted
 
+2025-06-06T14:50:10.309+02:00  INFO 14976 --- [legacy-hospital-system] [main] sae.semestre.six.DemoApplication         : Starting DemoApplication using Java 23.0.1 with PID 14976 (Z:\SaeS6\legacy-software\target\classes started by thomas.lemaire in Z:\SaeS6\legacy-software)
+2025-06-06T14:50:10.312+02:00 DEBUG 14976 --- [legacy-hospital-system] [main] sae.semestre.six.DemoApplication         : Running with Spring Boot v3.2.4, Spring v6.1.5
+2025-06-06T14:50:10.313+02:00  INFO 14976 --- [legacy-hospital-system] [main] sae.semestre.six.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-06-06T14:50:12.267+02:00  INFO 14976 --- [legacy-hospital-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-06T14:50:12.356+02:00  INFO 14976 --- [legacy-hospital-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 75 ms. Found 0 JPA repository interfaces.
+2025-06-06T14:50:13.054+02:00  INFO 14976 --- [legacy-hospital-system] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8045 (http)
+2025-06-06T14:50:13.072+02:00  INFO 14976 --- [legacy-hospital-system] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-06-06T14:50:13.073+02:00  INFO 14976 --- [legacy-hospital-system] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2025-06-06T14:50:13.161+02:00  INFO 14976 --- [legacy-hospital-system] [main] o.a.c.c.C.[.[localhost].[/hospital]      : Initializing Spring embedded WebApplicationContext
+2025-06-06T14:50:13.162+02:00  INFO 14976 --- [legacy-hospital-system] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2786 ms
+2025-06-06T14:50:13.461+02:00  INFO 14976 --- [legacy-hospital-system] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-06T14:50:13.604+02:00  INFO 14976 --- [legacy-hospital-system] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-06-06T14:50:13.685+02:00  INFO 14976 --- [legacy-hospital-system] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-06-06T14:50:14.273+02:00  INFO 14976 --- [legacy-hospital-system] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-06T14:50:14.329+02:00  INFO 14976 --- [legacy-hospital-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-06-06T14:50:14.572+02:00  INFO 14976 --- [legacy-hospital-system] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@678586f0
+2025-06-06T14:50:14.575+02:00  INFO 14976 --- [legacy-hospital-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-06-06T14:50:14.622+02:00  WARN 14976 --- [legacy-hospital-system] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-06-06T14:50:14.625+02:00  WARN 14976 --- [legacy-hospital-system] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-06-06T14:50:16.624+02:00  INFO 14976 --- [legacy-hospital-system] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-06T14:50:20.131+02:00  INFO 14976 --- [legacy-hospital-system] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-06T14:50:21.067+02:00  WARN 14976 --- [legacy-hospital-system] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-06T14:50:21.583+02:00  WARN 14976 --- [legacy-hospital-system] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-06-06T14:50:21.847+02:00  WARN 14976 --- [legacy-hospital-system] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Failed to execute SQL script statement #9 of file [Z:\SaeS6\legacy-software\target\classes\data.sql]: INSERT INTO bills (bill_number, patient_id, doctor_id, bill_date, status) VALUES ('FAC001', 1, 1, '2024-02-15', 'PAYÉE'), ('FAC002', 2, 2, '2024-02-15', 'EN ATTENTE'), ('FAC003', 3, 3, '2024-02-15', 'PAYÉE')
+2025-06-06T14:50:21.850+02:00  INFO 14976 --- [legacy-hospital-system] [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-06T14:50:21.854+02:00  INFO 14976 --- [legacy-hospital-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-06-06T14:50:21.859+02:00  INFO 14976 --- [legacy-hospital-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-06-06T14:50:21.861+02:00  INFO 14976 --- [legacy-hospital-system] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-06-06T14:50:21.878+02:00  INFO 14976 --- [legacy-hospital-system] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-06-06T14:50:21.974+02:00 ERROR 14976 --- [legacy-hospital-system] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Failed to execute SQL script statement #9 of file [Z:\SaeS6\legacy-software\target\classes\data.sql]: INSERT INTO bills (bill_number, patient_id, doctor_id, bill_date, status) VALUES ('FAC001', 1, 1, '2024-02-15', 'PAYÉE'), ('FAC002', 2, 2, '2024-02-15', 'EN ATTENTE'), ('FAC003', 3, 3, '2024-02-15', 'PAYÉE')
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-3.2.4.jar:3.2.4]
+	at sae.semestre.six.DemoApplication.main(DemoApplication.java:14) ~[classes/:na]
+Caused by: org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #9 of file [Z:\SaeS6\legacy-software\target\classes\data.sql]: INSERT INTO bills (bill_number, patient_id, doctor_id, bill_date, status) VALUES ('FAC001', 1, 1, '2024-02-15', 'PAYÉE'), ('FAC002', 2, 2, '2024-02-15', 'EN ATTENTE'), ('FAC003', 3, 3, '2024-02-15', 'PAYÉE')
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:282) ~[spring-jdbc-6.1.5.jar:6.1.5]
+	at org.springframework.jdbc.datasource.init.ResourceDatabasePopulator.populate(ResourceDatabasePopulator.java:254) ~[spring-jdbc-6.1.5.jar:6.1.5]
+	at org.springframework.jdbc.datasource.init.DatabasePopulatorUtils.execute(DatabasePopulatorUtils.java:54) ~[spring-jdbc-6.1.5.jar:6.1.5]
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.runScripts(DataSourceScriptDatabaseInitializer.java:87) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.runScripts(AbstractScriptDatabaseInitializer.java:146) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:108) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyDataScripts(AbstractScriptDatabaseInitializer.java:102) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:77) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:66) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782) ~[spring-beans-6.1.5.jar:6.1.5]
+	... 18 common frames omitted
+Caused by: java.sql.SQLException: Data truncated for column 'status' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:na]
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:261) ~[spring-jdbc-6.1.5.jar:6.1.5]
+	... 28 common frames omitted
+
+2025-06-06T14:52:42.481+02:00  INFO 17092 --- [legacy-hospital-system] [main] sae.semestre.six.DemoApplication         : Starting DemoApplication using Java 23.0.1 with PID 17092 (Z:\SaeS6\legacy-software\target\classes started by thomas.lemaire in Z:\SaeS6\legacy-software)
+2025-06-06T14:52:42.484+02:00 DEBUG 17092 --- [legacy-hospital-system] [main] sae.semestre.six.DemoApplication         : Running with Spring Boot v3.2.4, Spring v6.1.5
+2025-06-06T14:52:42.485+02:00  INFO 17092 --- [legacy-hospital-system] [main] sae.semestre.six.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-06-06T14:52:44.057+02:00  INFO 17092 --- [legacy-hospital-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-06T14:52:44.144+02:00  INFO 17092 --- [legacy-hospital-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 74 ms. Found 0 JPA repository interfaces.
+2025-06-06T14:52:44.851+02:00  INFO 17092 --- [legacy-hospital-system] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8045 (http)
+2025-06-06T14:52:44.871+02:00  INFO 17092 --- [legacy-hospital-system] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-06-06T14:52:44.871+02:00  INFO 17092 --- [legacy-hospital-system] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2025-06-06T14:52:44.959+02:00  INFO 17092 --- [legacy-hospital-system] [main] o.a.c.c.C.[.[localhost].[/hospital]      : Initializing Spring embedded WebApplicationContext
+2025-06-06T14:52:44.960+02:00  INFO 17092 --- [legacy-hospital-system] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2413 ms
+2025-06-06T14:52:45.251+02:00  INFO 17092 --- [legacy-hospital-system] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-06T14:52:45.388+02:00  INFO 17092 --- [legacy-hospital-system] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-06-06T14:52:45.464+02:00  INFO 17092 --- [legacy-hospital-system] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-06-06T14:52:46.061+02:00  INFO 17092 --- [legacy-hospital-system] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-06T14:52:46.115+02:00  INFO 17092 --- [legacy-hospital-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-06-06T14:52:46.357+02:00  INFO 17092 --- [legacy-hospital-system] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2f60cbf2
+2025-06-06T14:52:46.360+02:00  INFO 17092 --- [legacy-hospital-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-06-06T14:52:46.409+02:00  WARN 17092 --- [legacy-hospital-system] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-06-06T14:52:46.413+02:00  WARN 17092 --- [legacy-hospital-system] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-06-06T14:52:48.460+02:00  INFO 17092 --- [legacy-hospital-system] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-06T14:52:48.653+02:00  INFO 17092 --- [legacy-hospital-system] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-06T14:52:49.612+02:00  WARN 17092 --- [legacy-hospital-system] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-06T14:52:50.073+02:00  WARN 17092 --- [legacy-hospital-system] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-06-06T14:52:50.270+02:00  WARN 17092 --- [legacy-hospital-system] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Failed to execute SQL script statement #1 of file [Z:\SaeS6\legacy-software\target\classes\data.sql]: INSERT INTO doctors (doctor_number, first_name, last_name, specialization, phone_number, email, department) VALUES ('DR001', 'Pierre', 'Dubois', 'Cardiologie', '0123456789', 'pierre.dubois@hopital.fr', 'Cardiologie'), ('DR002', 'Marie', 'Laurent', 'Pédiatrie', '0123456790', 'marie.laurent@hopital.fr', 'Pédiatrie'), ('DR003', 'Jean', 'Martin', 'Neurologie', '0123456791', 'jean.martin@hopital.fr', 'Neurologie')
+2025-06-06T14:52:50.272+02:00  INFO 17092 --- [legacy-hospital-system] [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-06T14:52:50.276+02:00  INFO 17092 --- [legacy-hospital-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-06-06T14:52:50.282+02:00  INFO 17092 --- [legacy-hospital-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-06-06T14:52:50.283+02:00  INFO 17092 --- [legacy-hospital-system] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-06-06T14:52:50.294+02:00  INFO 17092 --- [legacy-hospital-system] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-06-06T14:52:50.334+02:00 ERROR 17092 --- [legacy-hospital-system] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Failed to execute SQL script statement #1 of file [Z:\SaeS6\legacy-software\target\classes\data.sql]: INSERT INTO doctors (doctor_number, first_name, last_name, specialization, phone_number, email, department) VALUES ('DR001', 'Pierre', 'Dubois', 'Cardiologie', '0123456789', 'pierre.dubois@hopital.fr', 'Cardiologie'), ('DR002', 'Marie', 'Laurent', 'Pédiatrie', '0123456790', 'marie.laurent@hopital.fr', 'Pédiatrie'), ('DR003', 'Jean', 'Martin', 'Neurologie', '0123456791', 'jean.martin@hopital.fr', 'Neurologie')
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-3.2.4.jar:3.2.4]
+	at sae.semestre.six.DemoApplication.main(DemoApplication.java:14) ~[classes/:na]
+Caused by: org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #1 of file [Z:\SaeS6\legacy-software\target\classes\data.sql]: INSERT INTO doctors (doctor_number, first_name, last_name, specialization, phone_number, email, department) VALUES ('DR001', 'Pierre', 'Dubois', 'Cardiologie', '0123456789', 'pierre.dubois@hopital.fr', 'Cardiologie'), ('DR002', 'Marie', 'Laurent', 'Pédiatrie', '0123456790', 'marie.laurent@hopital.fr', 'Pédiatrie'), ('DR003', 'Jean', 'Martin', 'Neurologie', '0123456791', 'jean.martin@hopital.fr', 'Neurologie')
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:282) ~[spring-jdbc-6.1.5.jar:6.1.5]
+	at org.springframework.jdbc.datasource.init.ResourceDatabasePopulator.populate(ResourceDatabasePopulator.java:254) ~[spring-jdbc-6.1.5.jar:6.1.5]
+	at org.springframework.jdbc.datasource.init.DatabasePopulatorUtils.execute(DatabasePopulatorUtils.java:54) ~[spring-jdbc-6.1.5.jar:6.1.5]
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.runScripts(DataSourceScriptDatabaseInitializer.java:87) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.runScripts(AbstractScriptDatabaseInitializer.java:146) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:108) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyDataScripts(AbstractScriptDatabaseInitializer.java:102) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:77) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:66) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782) ~[spring-beans-6.1.5.jar:6.1.5]
+	... 18 common frames omitted
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'DR001' for key 'UK_oft2xiqunhspw4f28o62afhqc'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:na]
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:261) ~[spring-jdbc-6.1.5.jar:6.1.5]
+	... 28 common frames omitted
+
+2025-06-06T14:53:29.767+02:00  INFO 14060 --- [legacy-hospital-system] [main] sae.semestre.six.DemoApplication         : Starting DemoApplication using Java 23.0.1 with PID 14060 (Z:\SaeS6\legacy-software\target\classes started by thomas.lemaire in Z:\SaeS6\legacy-software)
+2025-06-06T14:53:29.769+02:00 DEBUG 14060 --- [legacy-hospital-system] [main] sae.semestre.six.DemoApplication         : Running with Spring Boot v3.2.4, Spring v6.1.5
+2025-06-06T14:53:29.770+02:00  INFO 14060 --- [legacy-hospital-system] [main] sae.semestre.six.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-06-06T14:53:31.301+02:00  INFO 14060 --- [legacy-hospital-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-06T14:53:31.391+02:00  INFO 14060 --- [legacy-hospital-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 77 ms. Found 0 JPA repository interfaces.
+2025-06-06T14:53:32.082+02:00  INFO 14060 --- [legacy-hospital-system] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8045 (http)
+2025-06-06T14:53:32.102+02:00  INFO 14060 --- [legacy-hospital-system] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-06-06T14:53:32.103+02:00  INFO 14060 --- [legacy-hospital-system] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2025-06-06T14:53:32.180+02:00  INFO 14060 --- [legacy-hospital-system] [main] o.a.c.c.C.[.[localhost].[/hospital]      : Initializing Spring embedded WebApplicationContext
+2025-06-06T14:53:32.181+02:00  INFO 14060 --- [legacy-hospital-system] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2346 ms
+2025-06-06T14:53:32.470+02:00  INFO 14060 --- [legacy-hospital-system] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-06T14:53:32.613+02:00  INFO 14060 --- [legacy-hospital-system] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-06-06T14:53:32.694+02:00  INFO 14060 --- [legacy-hospital-system] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-06-06T14:53:33.269+02:00  INFO 14060 --- [legacy-hospital-system] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-06T14:53:33.323+02:00  INFO 14060 --- [legacy-hospital-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-06-06T14:53:33.558+02:00  INFO 14060 --- [legacy-hospital-system] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@47c96f2c
+2025-06-06T14:53:33.562+02:00  INFO 14060 --- [legacy-hospital-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-06-06T14:53:33.613+02:00  WARN 14060 --- [legacy-hospital-system] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-06-06T14:53:33.616+02:00  WARN 14060 --- [legacy-hospital-system] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-06-06T14:53:35.612+02:00  INFO 14060 --- [legacy-hospital-system] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-06T14:53:38.757+02:00  INFO 14060 --- [legacy-hospital-system] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-06T14:53:39.834+02:00  WARN 14060 --- [legacy-hospital-system] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-06T14:53:40.277+02:00  WARN 14060 --- [legacy-hospital-system] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-06-06T14:53:40.522+02:00  WARN 14060 --- [legacy-hospital-system] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Failed to execute SQL script statement #10 of file [Z:\SaeS6\legacy-software\target\classes\data.sql]: INSERT INTO bill_details (bill_id, treatment_name, quantity, unit_price, line_total) VALUES (1, 'Consultation cardiologique', 1, 150.00, 150.00), (2, 'Consultation pédiatrique', 1, 80.00, 80.00), (3, 'Consultation neurologique', 1, 120.00, 120.00)
+2025-06-06T14:53:40.525+02:00  INFO 14060 --- [legacy-hospital-system] [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-06T14:53:41.051+02:00  INFO 14060 --- [legacy-hospital-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-06-06T14:53:41.057+02:00  INFO 14060 --- [legacy-hospital-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-06-06T14:53:41.058+02:00  INFO 14060 --- [legacy-hospital-system] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-06-06T14:53:41.068+02:00  INFO 14060 --- [legacy-hospital-system] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-06-06T14:53:41.104+02:00 ERROR 14060 --- [legacy-hospital-system] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Failed to execute SQL script statement #10 of file [Z:\SaeS6\legacy-software\target\classes\data.sql]: INSERT INTO bill_details (bill_id, treatment_name, quantity, unit_price, line_total) VALUES (1, 'Consultation cardiologique', 1, 150.00, 150.00), (2, 'Consultation pédiatrique', 1, 80.00, 80.00), (3, 'Consultation neurologique', 1, 120.00, 120.00)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-3.2.4.jar:3.2.4]
+	at sae.semestre.six.DemoApplication.main(DemoApplication.java:14) ~[classes/:na]
+Caused by: org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #10 of file [Z:\SaeS6\legacy-software\target\classes\data.sql]: INSERT INTO bill_details (bill_id, treatment_name, quantity, unit_price, line_total) VALUES (1, 'Consultation cardiologique', 1, 150.00, 150.00), (2, 'Consultation pédiatrique', 1, 80.00, 80.00), (3, 'Consultation neurologique', 1, 120.00, 120.00)
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:282) ~[spring-jdbc-6.1.5.jar:6.1.5]
+	at org.springframework.jdbc.datasource.init.ResourceDatabasePopulator.populate(ResourceDatabasePopulator.java:254) ~[spring-jdbc-6.1.5.jar:6.1.5]
+	at org.springframework.jdbc.datasource.init.DatabasePopulatorUtils.execute(DatabasePopulatorUtils.java:54) ~[spring-jdbc-6.1.5.jar:6.1.5]
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.runScripts(DataSourceScriptDatabaseInitializer.java:87) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.runScripts(AbstractScriptDatabaseInitializer.java:146) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:108) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyDataScripts(AbstractScriptDatabaseInitializer.java:102) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:77) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:66) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782) ~[spring-beans-6.1.5.jar:6.1.5]
+	... 18 common frames omitted
+Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'line_total' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:na]
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:261) ~[spring-jdbc-6.1.5.jar:6.1.5]
+	... 28 common frames omitted
+
