@@ -2,6 +2,7 @@
 
 - http://localhost:8888/
 - http://localhost:8888/remboursement/search/remboursementByNomProduitAndNomAssurance
+- http://localhost:8888/swagger-ui/index.html
 
 ## Jeu de données
 ```
