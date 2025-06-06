@@ -46,10 +46,10 @@ INSERT INTO prescriptions (prescription_number, patient_id, medicines, notes, to
 ('ORD003', 3, 'Sumatriptan 50mg', 'Prendre dès les premiers symptômes', 35.80, true, true);
 
 -- Insertion des factures
-INSERT INTO bills (bill_number, patient_id, doctor_id, bill_date, total_amount, status) VALUES
-('FAC001', 1, 1, '2024-02-15', 150.00, 'PAYÉE'),
-('FAC002', 2, 2, '2024-02-15', 80.00, 'EN ATTENTE'),
-('FAC003', 3, 3, '2024-02-15', 120.00, 'PAYÉE');
+INSERT INTO bills (bill_number, patient_id, doctor_id, bill_date, status) VALUES
+('FAC001', 1, 1, '2024-02-15', 'PAYÉE'),
+('FAC002', 2, 2, '2024-02-15', 'EN ATTENTE'),
+('FAC003', 3, 3, '2024-02-15', 'PAYÉE');
 
 -- Insertion des détails des factures
 INSERT INTO bill_details (bill_id, treatment_name, quantity, unit_price, line_total) VALUES
