@@ -1,13 +1,4 @@
-# ms-assurance
-
-- http://localhost:8888/
-- http://localhost:8888/remboursement/search/remboursementByNomProduitAndNomAssurance
-- http://localhost:8888/swagger-ui/index.html
-
-## Jeu de données
-```
-INSERT INTO remboursements (nom_produit, nom_assurance, montant_base, taux_remboursement, montant_rembourse)
-VALUES 
+INSERT INTO remboursement (nom_produit, nom_assurance, montant_base, taux_remboursement, montant_rembourse) VALUES
 ('CONSULTATION', 'SECUREPLUS', 30.0, 70.0, 21.0),
 ('CONSULTATION', 'PROTEXIA', 30.0, 65.0, 19.5),
 ('CONSULTATION', 'SANTEVIE', 30.0, 50.0, 15.0),
@@ -38,5 +29,3 @@ VALUES
 ('CHIRURGIE', 'PROTEXIA', 5000.0, 85.0, 4250.0),
 ('MATERNITE', 'SECUREPLUS', 2000.0, 80.0, 1600.0),
 ('MATERNITE', 'SANTEVIE', 2000.0, 75.0, 1500.0);
-```
-Les mêmes instructions d'insertion se trouvent dans `src/main/resources/data.sql` afin que les données soient chargées automatiquement au démarrage du service.
